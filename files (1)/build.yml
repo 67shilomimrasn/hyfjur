@@ -1,4 +1,4 @@
-name: Build Mod
+name: Build Geode Mod
 
 on:
   workflow_dispatch:
@@ -8,18 +8,24 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: Windows
+            os: windows-latest
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
     steps:
       - uses: actions/checkout@v4
 
       - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          bindings: geode-sdk/bindings
-          bindings-ref: main
           combine: true
-          sdk: latest
-          build-config: RelWithDebInfo
+          target: ${{ matrix.config.target }}
 
   package:
     name: Package builds

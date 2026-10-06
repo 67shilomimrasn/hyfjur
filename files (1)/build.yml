@@ -19,7 +19,6 @@ jobs:
           bindings-ref: main
           combine: true
           sdk: latest
-          target: Win
           build-config: RelWithDebInfo
 
   package:

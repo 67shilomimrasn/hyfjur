@@ -1,7 +1,9 @@
-#include <Geode/Geode.hpp>
+ #include <Geode/Geode.hpp>
 #include <Geode/modify/PlayLayer.hpp>
 
 #include <algorithm>
+#include <cctype>
+#include <cstdlib>
 #include <chrono>
 #include <string>
 #include <thread>
@@ -158,7 +160,7 @@ class $modify(AutoDeafenPlayLayer, PlayLayer) {
 	};
 
 	void tryUndeafen() {
-		auto f = m_fields.self();
+		auto& f = m_fields;
 		if (!f->m_deafenedByMod) return;
 		f->m_deafenedByMod = false;
 		if (Mod::get()->getSettingValue<bool>("undeafen")) {
@@ -173,7 +175,7 @@ class $modify(AutoDeafenPlayLayer, PlayLayer) {
 		if (!mod->getSettingValue<bool>("enabled")) return;
 		if (m_isPracticeMode && !mod->getSettingValue<bool>("practice")) return;
 
-		auto f = m_fields.self();
+		auto& f = m_fields;
 		if (f->m_deafenedByMod) return;
 		if (m_player1 && m_player1->m_isDead) return;
 

@@ -1,0 +1,47 @@
+{
+	"geode": "5.9.0",
+	"gd": {
+		"win": "2.2081"
+	},
+	"version": "v1.0.0",
+	"id": "yourname.auto-deafen",
+	"name": "Auto Deafen",
+	"developer": "yourname",
+	"description": "Presses a keybind (e.g. your Discord deafen keybind) when you reach a chosen percent in a level.",
+	"settings": {
+		"enabled": {
+			"type": "bool",
+			"name": "Enabled",
+			"default": true
+		},
+		"target-percent": {
+			"type": "int",
+			"name": "Deafen at percent",
+			"description": "The level percent at which the keybind is pressed.",
+			"default": 25,
+			"min": 1,
+			"max": 100,
+			"control": {
+				"input": true,
+				"slider": true
+			}
+		},
+		"keybind": {
+			"type": "string",
+			"name": "Keybind",
+			"description": "Must match your Discord deafen keybind. Examples: F10, Ctrl+Shift+D, Alt+F8, Ctrl+Numpad1",
+			"default": "Ctrl+Shift+D"
+		},
+		"undeafen": {
+			"type": "bool",
+			"name": "Undeafen on death / exit / complete",
+			"description": "Presses the keybind again to undeafen when the attempt ends. Needed since Discord's keybind is a toggle.",
+			"default": true
+		},
+		"practice": {
+			"type": "bool",
+			"name": "Work in practice mode",
+			"default": false
+		}
+	}
+}
